@@ -3,142 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO e Metadados -->
-    <title>Guia Acesso Livre - Miranda/MS | Acessibilidade Urbana e Turística</title>
-    <meta name="description" content="Mapeamento colaborativo de acessibilidade em Miranda - MS. Encontre restaurantes, pontos históricos, cultura e passeios com rampas, banheiros PCD e vagas reservadas.">
-    <meta name="keywords" content="Miranda MS, Pantanal, Acessibilidade, PCD, Turismo Acessível, Vaga PCD, Rampa">
-
-    <!-- Favicon Acessível -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♿</text></svg>">
-
-    <!-- CSS Externo -->
+    <title>Guia Acesso Livre - Miranda/MS | Acessibilidade</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <div class="logo" onclick="nav('home')" tabindex="0" role="button" aria-label="Ir para a página inicial">♿ Guia Miranda/MS</div>
+    <div class="logo" onclick="window.location.hash='#home'">♿ Guia Acesso Livre - Miranda/MS</div>
     <nav>
-        <button onclick="toggleContrast()" id="btnContrast" aria-label="Ativar Alto Contraste">👁️ Alto Contraste</button>
+        <button class="btn-hc" onclick="document.body.classList.toggle('hc')" aria-label="Ativar Alto Contraste">👁️ Alto Contraste</button>
     </nav>
 </header>
 
 <main>
     <!-- TELA 1: HOME -->
-    <section id="home" class="view active">
+    <section id="home" class="view">
         <div class="hero">
             <h1>Acessibilidade em Miranda - MS</h1>
-            <p style="margin: 0.5rem 0 1.5rem; font-size: 1.1rem;">História, Cultura, Gastronomia e Passeios Acessíveis Mapeados</p>
-            <div style="max-width: 600px; margin: 0 auto; display: flex; gap: 10px;">
-                <input type="text" id="homeSearch" placeholder="Pesquisar por nome ou local..." oninput="filterLocais(this.value)" aria-label="Campo de busca de locais">
-                <button class="btn" style="width: auto; padding: 0 1.5rem;" onclick="nav('search')">Buscar</button>
-            </div>
+            <p>Guia Mapeado de Ecoturismo, História, Gastronomia e Hospedagem</p>
+            <input type="text" id="homeSearch" placeholder="Pesquisar por local ou atrativo em Miranda (Aperte Enter)..." onkeypress="searchFromHome(event)">
+            <button class="btn" onclick="window.location.hash='#search'">Explorar Todos os 12 Locais</button>
         </div>
-        
-        <h2 style="margin-bottom:1.5rem; text-align: center;">Categorias Rápidas</h2>
-        <div class="grid">
-            <div class="card category-card" onclick="filterCat('Gastronomia')" tabindex="0" role="button"><h2>🍽️</h2><h3>Gastronomia</h3></div>
-            <div class="card category-card" onclick="filterCat('História')" tabindex="0" role="button"><h2>🚂</h2><h3>História</h3></div>
-            <div class="card category-card" onclick="filterCat('Cultura')" tabindex="0" role="button"><h2>🎨</h2><h3>Cultura</h3></div>
-            <div class="card category-card" onclick="filterCat('Ecoturismo')" tabindex="0" role="button"><h2>🌳</h2><h3>Ecoturismo</h3></div>
-            <div class="card category-card" onclick="filterCat('Pousada')" tabindex="0" role="button"><h2>🛏️</h2><h3>Hospedagem</h3></div>
+
+        <h2 style="margin-bottom:1rem;">Explore por Categorias</h2>
+        <div class="grid cat-grid">
+            <div class="card cat-card" onclick="filterCat('Ecoturismo')"><h2>🌳</h2><p>Ecoturismo</p></div>
+            <div class="card cat-card" onclick="filterCat('História')"><h2>🚂</h2><p>História</p></div>
+            <div class="card cat-card" onclick="filterCat('Gastronomia')"><h2>🍽️</h2><p>Gastronomia</p></div>
+            <div class="card cat-card" onclick="filterCat('Hospedagem')"><h2>🛏️</h2><p>Hospedagem</p></div>
+            <div class="card cat-card" onclick="filterCat('Cultura')"><h2>🎨</h2><p>Cultura Terena</p></div>
         </div>
     </section>
 
-    <!-- TELA 2: BUSCA E RESULTADOS -->
+    <!-- TELA 2: BUSCA E FILTROS -->
     <section id="search" class="view">
-        <h2 style="margin-bottom: 1.5rem;">Locais Acessíveis em Miranda/MS</h2>
+        <h2 style="margin-bottom: 0.5rem;">Locais Acessíveis Mapeados</h2>
+        <p id="total-count" style="color: #666; margin-bottom: 1rem;">Carregando...</p>
+
         <div class="search-layout">
             <aside class="filters">
-                <h3 style="margin-bottom: 1rem;">Buscar & Filtrar</h3>
-                <input type="text" id="searchInput" placeholder="Digite para buscar..." oninput="filterLocais(this.value)" aria-label="Filtrar locais por texto">
-                <hr style="margin:1rem 0; border: 0; border-top: 1px solid #ddd;">
-                <div class="filter-group">
-                    <label><input type="checkbox" onchange="filterCheck()" id="chkRampa"> ♿ Rampa de Acesso</label>
-                    <label><input type="checkbox" onchange="filterCheck()" id="chkBanheiro"> 🚾 Banheiro PCD</label>
-                    <label><input type="checkbox" onchange="filterCheck()" id="chkVaga"> 🅿️ Vaga Reservada</label>
-                </div>
-                <button class="btn btn-sec" style="width: 100%; margin-top: 1rem;" onclick="resetFilters()">Limpar Filtros</button>
+                <h3>Buscar & Filtrar</h3>
+                <input type="text" id="searchInput" placeholder="Digite para buscar..." oninput="applyFilters()">
+                
+                <label style="font-weight:bold; margin-top:1rem; display:block;">Categoria:</label>
+                <select id="catSelect" onchange="applyFilters()">
+                    <option value="Todas">Todas as Categorias</option>
+                    <option value="Ecoturismo">Ecoturismo</option>
+                    <option value="História">História</option>
+                    <option value="Gastronomia">Gastronomia</option>
+                    <option value="Hospedagem">Hospedagem</option>
+                    <option value="Cultura">Cultura</option>
+                </select>
+
+                <hr style="margin:1rem 0;">
+                <label style="font-weight:bold;">Recursos de Acessibilidade:</label><br>
+                <label><input type="checkbox" id="chkRampa" onchange="applyFilters()"> ♿ Rampa de Acesso</label><br>
+                <label><input type="checkbox" id="chkBanheiro" onchange="applyFilters()"> 🚾 Banheiro PCD</label><br>
+                <label><input type="checkbox" id="chkVaga" onchange="applyFilters()"> 🅿️ Vaga Reservada</label><br>
+                <label><input type="checkbox" id="chkQuarto" onchange="applyFilters()"> 🛏️ Quarto Adaptado</label><br>
+
+                <button class="btn btn-sec" style="margin-top: 1rem; width: 100%;" onclick="resetFilters()">Limpar Filtros</button>
             </aside>
-            <div class="grid" id="results-grid" style="flex:1;" aria-live="polite"></div>
+
+            <div class="grid results" id="results-grid"></div>
         </div>
     </section>
 
-    <!-- TELA 3: DETALHES DO LOCAL -->
+    <!-- TELA 3: DETALHES -->
     <section id="details" class="view">
-        <div class="alert" id="det-alert" style="display: none;"></div>
+        <button class="btn btn-sec" onclick="window.location.hash='#search'" style="margin-bottom: 1rem;">← Voltar para a Busca</button>
         
-        <div class="card" style="cursor: default; transform: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-            <div class="card-info" style="padding: 2rem;">
-                <h1 id="det-title" style="font-size: 2rem; margin-bottom: 0.5rem;">Local</h1>
-                <p id="det-address" style="color: #666; font-size: 1.1rem; margin-bottom: 1rem;"></p>
-                <p style="color: #f39c12; margin-bottom: 1.5rem; font-weight: bold; font-size: 1.1rem;">★★★★☆ (4.8) - Avaliações da comunidade</p>
-                
-                <h3 style="border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; margin-bottom: 1rem;">Recursos Disponíveis:</h3>
-                <div id="det-tags" style="margin-bottom: 1.5rem;"></div>
-                
-                <div style="display:flex; gap:1rem; margin-bottom: 2rem; flex-wrap: wrap;">
-                    <button class="btn btn-sec" id="btnMap" style="flex:1; min-width: 200px;">📍 Traçar Rota (Google Maps)</button>
-                    <button class="btn" id="btnZap" style="flex:1; min-width: 200px; background: #25D366;">📲 Compartilhar (WhatsApp)</button>
-                </div>
+        <div class="alert" id="det-alert" style="display: none;"></div>
 
-                <h3 style="border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; margin-bottom: 1rem;">Avaliações da Comunidade</h3>
-                <div id="review-list" style="margin-bottom: 2rem;">
-                    <div style="background: rgba(0,0,0,0.05); padding: 1rem; border-radius: 5px; border-left: 4px solid var(--secondary); margin-bottom: 1rem;">
-                        <strong>Maria S.</strong>
-                        <p style="margin-top: 0.5rem;">Ótimo espaço e fácil acessibilidade para cadeirantes. Fomos muito bem recebidos!</p>
-                    </div>
-                </div>
+        <div class="card card-detail">
+            <span class="badge-cat" id="det-cat"></span>
+            <h1 id="det-title"></h1>
+            <p id="det-address" style="color: #555; margin: 0.3rem 0; font-weight: bold;"></p>
+            <p id="det-tel" style="color: #666; margin-bottom: 1rem;"></p>
+            
+            <p id="det-desc" style="line-height:1.7; margin-bottom: 1rem;"></p>
 
-                <h3 style="margin-bottom: 1rem;">Compartilhe sua Experiência</h3>
-                <input type="text" id="userName" placeholder="Seu nome (Opcional)" aria-label="Seu nome">
-                <textarea id="userMsg" rows="4" placeholder="Conte como foi a acessibilidade ou reporte um problema no local..." aria-label="Sua avaliação"></textarea>
-                
-                <div style="display:flex; gap:1rem; margin-top: 1rem; flex-wrap: wrap;">
-                    <button class="btn" style="flex: 1; min-width: 200px;" onclick="addReview()">Publicar Avaliação</button>
-                    <button class="btn btn-sec" style="flex: 1; min-width: 200px;" onclick="nav('search')">← Voltar para Busca</button>
+            <h3>Recursos de Acessibilidade:</h3>
+            <div id="det-tags" style="margin: 0.5rem 0 1.5rem 0;"></div>
+            
+            <div style="display:flex; gap:0.5rem; flex-wrap: wrap;">
+                <button class="btn" id="btnMap" style="flex:1;">📍 Ver no Google Maps</button>
+                <button class="btn btn-sec" id="btnZap" style="flex:1;">📲 Compartilhar WhatsApp</button>
+            </div>
+
+            <hr style="margin:2rem 0;">
+
+            <h3>Avaliações da Comunidade</h3>
+            <div id="review-list">
+                <div class="review-card">
+                    <strong>Equipe Guia Acesso Livre:</strong> • Oficial
+                    <p>Local verificado presencialmente pelas equipes de mapeamento urbano e ambiental de Miranda/MS.</p>
                 </div>
             </div>
+
+            <hr style="margin:1.5rem 0;">
+
+            <h3>Deixe sua Avaliação de Acessibilidade</h3>
+            <input type="text" id="userName" placeholder="Seu Nome">
+            <textarea id="userMsg" rows="3" placeholder="Conte como foi sua experiência com a acessibilidade neste local..."></textarea>
+            <button class="btn" onclick="addReview()">Enviar Avaliação</button>
         </div>
     </section>
 
     <!-- PÁGINA 404 -->
-    <section id="p404" class="view" style="text-align: center; padding: 5rem 1rem;">
-        <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);">404</h1>
-        <h2>Página Não Encontrada</h2>
-        <p style="margin: 1.5rem 0;">O local ou recurso que você tentou acessar não foi localizado em Miranda - MS.</p>
-        <button class="btn btn-sec" style="max-width: 250px;" onclick="nav('home')">Voltar ao Início</button>
+    <section id="p404" class="view" style="text-align: center; padding: 4rem 1rem;">
+        <h1>404 - Ponto não encontrado</h1>
+        <p style="margin: 1rem 0;">O local solicitado não foi encontrado na base de dados de Miranda/MS.</p>
+        <button class="btn" onclick="window.location.hash='#home'">Voltar ao Início</button>
     </section>
 </main>
 
-<div id="cookie-banner">
-    <p>Este site utiliza cookies para salvar suas preferências de acessibilidade e navegação.</p>
-    <button class="btn" style="width: auto; padding: 0.5rem 1.5rem;" onclick="acceptCookies()">Entendi</button>
-</div>
-
 <footer>
-    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-bottom: 1.5rem;">
-        <div style="flex: 1; min-width: 250px;">
-            <h4>Guia Acesso Livre Miranda/MS</h4>
-            <p>Rua Elias Rezek, Centro - Miranda/MS</p>
-            <p>CEP 79360-000</p>
-            <p style="margin-top: 0.5rem;">Contato: contato@guiamirandams.com.br</p>
-        </div>
-        <div>
-            <h4>Navegação Rápida</h4>
-            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                <a href="javascript:void(0)" onclick="nav('home')">Início</a>
-                <a href="javascript:void(0)" onclick="nav('search')">Buscar Locais</a>
-            </div>
-        </div>
-    </div>
-    <hr style="border-color: #333; margin-bottom: 1.5rem;">
-    <p style="text-align: center; color: #888;">© 2026 Guia Acesso Livre Miranda - Todos os direitos reservados.</p>
+    <p>Guia Acesso Livre Miranda/MS - Contato: contato@guiamirandams.com.br</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2026 Guia Acesso Livre Pantanal - Miranda, Mato Grosso do Sul.</p>
 </footer>
 
-<!-- JavaScript Externo -->
-<script src="script.js" defer></script>
+<script src="script.js"></script>
 </body>
 </html>
 

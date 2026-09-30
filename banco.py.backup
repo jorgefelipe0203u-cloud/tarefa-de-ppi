@@ -1,0 +1,51 @@
+from flask import Flask, jsonify, request
+import sqlite3
+
+app = Flask(__name__)
+
+
+def conectar():
+    conn = sqlite3.connect("sistema.db")
+    conn.row_factory = sqlite3.Row  # Converte o retorno do banco em dicionário
+    return conn
+
+
+# Garante que a tabela existe
+with conectar() as conn:
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS produtos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL,
+            preco REAL NOT NULL,
+            estoque INTEGER DEFAULT 0
+        )
+    """
+    )
+
+
+# Rota para o site BUSCAR a lista de produtos (GET)
+@app.route("/api/produtos", methods=["GET"])
+def listar_produtos():
+    with conectar() as conn:
+        produtos = conn.execute("SELECT * FROM produtos").fetchall()
+        return jsonify([dict(p) for p in produtos])
+
+
+# Rota para o site CADASTRAR um produto novo (POST)
+@app.route("/api/produtos", methods=["POST"])
+def criar_produto():
+    dados = request.get_json()
+    with conectar() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO produtos (nome, preco, estoque) VALUES (?, ?, ?)",
+            (dados["nome"], dados["preco"], dados.get("estoque", 0)),
+        )
+        id_criado = cursor.lastrowid
+    return jsonify({"id": id_criado, "status": "sucesso"}), 201
+
+
+if __name__ == "__main__":
+    app.run(port=5000, debug=True)
+
