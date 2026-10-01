@@ -3,127 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Acesso Livre - Miranda/MS | Acessibilidade</title>
+
+    <meta
+        name="description"
+        content="Guia de lugares de Miranda, Mato Grosso do Sul, com acesso rápido ao Google Maps."
+    >
+
+    <title>Guia Miranda/MS</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-    <div class="logo" onclick="window.location.hash='#home'">♿ Guia Acesso Livre - Miranda/MS</div>
-    <nav>
-        <button class="btn-hc" onclick="document.body.classList.toggle('hc')" aria-label="Ativar Alto Contraste">👁️ Alto Contraste</button>
-    </nav>
+<header class="header">
+
+    <button class="logo" onclick="irPara('home')">
+        ♿ Guia Miranda/MS
+    </button>
+
+    <button
+        class="btn-contraste"
+        onclick="alternarContraste()"
+        aria-label="Ativar alto contraste"
+    >
+        👁️ Contraste
+    </button>
+
 </header>
 
+
 <main>
-    <!-- TELA 1: HOME -->
-    <section id="home" class="view">
+
+    <!-- =========================
+         INÍCIO
+    ========================== -->
+
+    <section id="home" class="pagina ativa">
+
         <div class="hero">
-            <h1>Acessibilidade em Miranda - MS</h1>
-            <p>Guia Mapeado de Ecoturismo, História, Gastronomia e Hospedagem</p>
-            <input type="text" id="homeSearch" placeholder="Pesquisar por local ou atrativo em Miranda (Aperte Enter)..." onkeypress="searchFromHome(event)">
-            <button class="btn" onclick="window.location.hash='#search'">Explorar Todos os 12 Locais</button>
-        </div>
 
-        <h2 style="margin-bottom:1rem;">Explore por Categorias</h2>
-        <div class="grid cat-grid">
-            <div class="card cat-card" onclick="filterCat('Ecoturismo')"><h2>🌳</h2><p>Ecoturismo</p></div>
-            <div class="card cat-card" onclick="filterCat('História')"><h2>🚂</h2><p>História</p></div>
-            <div class="card cat-card" onclick="filterCat('Gastronomia')"><h2>🍽️</h2><p>Gastronomia</p></div>
-            <div class="card cat-card" onclick="filterCat('Hospedagem')"><h2>🛏️</h2><p>Hospedagem</p></div>
-            <div class="card cat-card" onclick="filterCat('Cultura')"><h2>🎨</h2><p>Cultura Terena</p></div>
-        </div>
-    </section>
+            <span class="eyebrow">
+                MIRANDA • MATO GROSSO DO SUL
+            </span>
 
-    <!-- TELA 2: BUSCA E FILTROS -->
-    <section id="search" class="view">
-        <h2 style="margin-bottom: 0.5rem;">Locais Acessíveis Mapeados</h2>
-        <p id="total-count" style="color: #666; margin-bottom: 1rem;">Carregando...</p>
+            <h1>
+                Encontre lugares em Miranda
+            </h1>
 
-        <div class="search-layout">
-            <aside class="filters">
-                <h3>Buscar & Filtrar</h3>
-                <input type="text" id="searchInput" placeholder="Digite para buscar..." oninput="applyFilters()">
-                
-                <label style="font-weight:bold; margin-top:1rem; display:block;">Categoria:</label>
-                <select id="catSelect" onchange="applyFilters()">
-                    <option value="Todas">Todas as Categorias</option>
-                    <option value="Ecoturismo">Ecoturismo</option>
-                    <option value="História">História</option>
-                    <option value="Gastronomia">Gastronomia</option>
-                    <option value="Hospedagem">Hospedagem</option>
-                    <option value="Cultura">Cultura</option>
-                </select>
+            <p>
+                Pesquise hotéis, restaurantes, pontos turísticos
+                e outros lugares reais da cidade.
+            </p>
 
-                <hr style="margin:1rem 0;">
-                <label style="font-weight:bold;">Recursos de Acessibilidade:</label><br>
-                <label><input type="checkbox" id="chkRampa" onchange="applyFilters()"> ♿ Rampa de Acesso</label><br>
-                <label><input type="checkbox" id="chkBanheiro" onchange="applyFilters()"> 🚾 Banheiro PCD</label><br>
-                <label><input type="checkbox" id="chkVaga" onchange="applyFilters()"> 🅿️ Vaga Reservada</label><br>
-                <label><input type="checkbox" id="chkQuarto" onchange="applyFilters()"> 🛏️ Quarto Adaptado</label><br>
+            <div class="busca-principal">
 
-                <button class="btn btn-sec" style="margin-top: 1rem; width: 100%;" onclick="resetFilters()">Limpar Filtros</button>
-            </aside>
+                <input
+                    type="search"
+                    id="homeSearch"
+                    placeholder="Digite o nome de um lugar..."
+                    aria-label="Pesquisar lugar"
+                >
 
-            <div class="grid results" id="results-grid"></div>
-        </div>
-    </section>
+                <button
+                    class="btn"
+                    onclick="pesquisarInicio()"
+                >
+                    🔎 Pesquisar
+                </button>
 
-    <!-- TELA 3: DETALHES -->
-    <section id="details" class="view">
-        <button class="btn btn-sec" onclick="window.location.hash='#search'" style="margin-bottom: 1rem;">← Voltar para a Busca</button>
-        
-        <div class="alert" id="det-alert" style="display: none;"></div>
-
-        <div class="card card-detail">
-            <span class="badge-cat" id="det-cat"></span>
-            <h1 id="det-title"></h1>
-            <p id="det-address" style="color: #555; margin: 0.3rem 0; font-weight: bold;"></p>
-            <p id="det-tel" style="color: #666; margin-bottom: 1rem;"></p>
-            
-            <p id="det-desc" style="line-height:1.7; margin-bottom: 1rem;"></p>
-
-            <h3>Recursos de Acessibilidade:</h3>
-            <div id="det-tags" style="margin: 0.5rem 0 1.5rem 0;"></div>
-            
-            <div style="display:flex; gap:0.5rem; flex-wrap: wrap;">
-                <button class="btn" id="btnMap" style="flex:1;">📍 Ver no Google Maps</button>
-                <button class="btn btn-sec" id="btnZap" style="flex:1;">📲 Compartilhar WhatsApp</button>
             </div>
 
-            <hr style="margin:2rem 0;">
+            <button
+                class="link-button"
+                onclick="irPara('lugares')"
+            >
+                Ver todos os lugares →
+            </button>
 
-            <h3>Avaliações da Comunidade</h3>
-            <div id="review-list">
-                <div class="review-card">
-                    <strong>Equipe Guia Acesso Livre:</strong> • Oficial
-                    <p>Local verificado presencialmente pelas equipes de mapeamento urbano e ambiental de Miranda/MS.</p>
-                </div>
+        </div>
+
+
+        <section class="secao">
+
+            <div class="titulo-secao">
+
+                <span class="eyebrow">
+                    EXPLORAR
+                </span>
+
+                <h2>
+                    Categorias
+                </h2>
+
             </div>
 
-            <hr style="margin:1.5rem 0;">
 
-            <h3>Deixe sua Avaliação de Acessibilidade</h3>
-            <input type="text" id="userName" placeholder="Seu Nome">
-            <textarea id="userMsg" rows="3" placeholder="Conte como foi sua experiência com a acessibilidade neste local..."></textarea>
-            <button class="btn" onclick="addReview()">Enviar Avaliação</button>
+            <div class="categorias">
+
+                <button
+                    class="categoria"
+                    onclick="filtrarCategoria('Todos')"
+                >
+                    <span>📍</span>
+                    <strong>Todos</strong>
+                    <small>Todos os lugares</small>
+                </button>
+
+
+                <button
+                    class="categoria"
+                    onclick="filtrarCategoria('Hospedagem')"
+                >
+                    <span>🛏️</span>
+                    <strong>Hospedagem</strong>
+                    <small>Hotéis e pousadas</small>
+                </button>
+
+
+                <button
+                    class="categoria"
+                    onclick="filtrarCategoria('Gastronomia')"
+                >
+                    <span>🍽️</span>
+                    <strong>Gastronomia</strong>
+                    <small>Restaurantes e comida</small>
+                </button>
+
+
+                <button
+                    class="categoria"
+                    onclick="filtrarCategoria('Ecoturismo')"
+                >
+                    <span>🌿</span>
+                    <strong>Ecoturismo</strong>
+                    <small>Natureza e Pantanal</small>
+                </button>
+
+
+                <button
+                    class="categoria"
+                    onclick="filtrarCategoria('Cultura')"
+                >
+                    <span>🎭</span>
+                    <strong>Cultura</strong>
+                    <small>História e cultura</small>
+                </button>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <!-- =========================
+         LISTA DE LUGARES
+    ========================== -->
+
+    <section id="lugares" class="pagina">
+
+        <div class="cabecalho-lista">
+
+            <div>
+
+                <span class="eyebrow">
+                    GUIA
+                </span>
+
+                <h2>
+                    Lugares de Miranda
+                </h2>
+
+                <p id="contador">
+                    Carregando lugares...
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn btn-secundario"
+                onclick="irPara('home')"
+            >
+                ← Início
+            </button>
+
         </div>
+
+
+        <div class="filtros">
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Pesquisar lugar..."
+                oninput="aplicarFiltros()"
+            >
+
+
+            <select
+                id="categoriaSelect"
+                onchange="aplicarFiltros()"
+            >
+
+                <option value="Todos">
+                    Todas as categorias
+                </option>
+
+                <option value="Hospedagem">
+                    Hospedagem
+                </option>
+
+                <option value="Gastronomia">
+                    Gastronomia
+                </option>
+
+                <option value="Ecoturismo">
+                    Ecoturismo
+                </option>
+
+                <option value="Cultura">
+                    Cultura
+                </option>
+
+            </select>
+
+
+            <button
+                class="btn btn-secundario"
+                onclick="limparFiltros()"
+            >
+                Limpar
+            </button>
+
+        </div>
+
+
+        <div
+            id="lista-lugares"
+            class="lista-lugares"
+        ></div>
+
     </section>
 
-    <!-- PÁGINA 404 -->
-    <section id="p404" class="view" style="text-align: center; padding: 4rem 1rem;">
-        <h1>404 - Ponto não encontrado</h1>
-        <p style="margin: 1rem 0;">O local solicitado não foi encontrado na base de dados de Miranda/MS.</p>
-        <button class="btn" onclick="window.location.hash='#home'">Voltar ao Início</button>
+
+    <!-- =========================
+         DETALHES
+    ========================== -->
+
+    <section id="detalhes" class="pagina">
+
+        <button
+            class="btn btn-secundario voltar"
+            onclick="irPara('lugares')"
+        >
+            ← Voltar
+        </button>
+
+
+        <article class="detalhes-card">
+
+            <span
+                id="detCategoria"
+                class="badge"
+            ></span>
+
+
+            <h1 id="detNome"></h1>
+
+
+            <p
+                id="detEndereco"
+                class="endereco"
+            ></p>
+
+
+            <p
+                id="detDescricao"
+                class="descricao"
+            ></p>
+
+
+            <div class="acoes">
+
+                <button
+                    id="botaoMaps"
+                    class="btn"
+                >
+                    📍 Abrir no Google Maps
+                </button>
+
+
+                <a
+                    id="botaoFonte"
+                    class="btn btn-secundario"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🔗 Fonte
+                </a>
+
+            </div>
+
+
+            <div class="aviso">
+
+                <strong>ℹ️ Importante</strong>
+
+                <p>
+                    Este guia mostra locais e pontos de interesse
+                    encontrados em fontes públicas. A presença de um
+                    local no guia não significa que sua acessibilidade
+                    tenha sido verificada pelo projeto.
+                </p>
+
+            </div>
+
+        </article>
+
     </section>
+
 </main>
 
+
 <footer>
-    <p>Guia Acesso Livre Miranda/MS - Contato: contato@guiamirandams.com.br</p>
-    <p style="margin-top: 0.5rem; font-size: 0.85rem;">© 2026 Guia Acesso Livre Pantanal - Miranda, Mato Grosso do Sul.</p>
+
+    <strong>
+        ♿ Guia Acesso Livre — Miranda/MS
+    </strong>
+
+    <p>
+        Projeto informativo sobre lugares de Miranda,
+        Mato Grosso do Sul.
+    </p>
+
 </footer>
 
+
 <script src="script.js"></script>
+
 </body>
 </html>
-
