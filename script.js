@@ -1,9 +1,12 @@
-// ============================================================
-// GUIA MIRANDA/MS
-// Sem banco de dados.
-// Os locais ficam neste arquivo e o Maps faz a localização.
-// ============================================================
+/* =========================================================
+   GUIA MIRANDA/MS
+   Sem banco de dados
+========================================================= */
 
+
+/* =========================================================
+   DADOS DOS LOCAIS
+========================================================= */
 
 const locais = [
 
@@ -14,14 +17,20 @@ const locais = [
 
         categoria: "Hospedagem",
 
-        endereco:
-            "Rua Firmo Dutra, 45 - Miranda/MS",
+        endereco: "Miranda/MS",
 
         descricao:
-            "Hotel localizado em Miranda, Mato Grosso do Sul.",
+            "Opção de hospedagem localizada no município de Miranda/MS.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -32,14 +41,20 @@ const locais = [
 
         categoria: "Hospedagem",
 
-        endereco:
-            "BR-262, Km 543,5 - Miranda/MS",
+        endereco: "Miranda/MS",
 
         descricao:
-            "Pousada localizada na região de Miranda.",
+            "Opção de hospedagem na região de Miranda/MS.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -50,14 +65,20 @@ const locais = [
 
         categoria: "Ecoturismo",
 
-        endereco:
-            "Estância Caiman - Miranda/MS",
+        endereco: "Região de Miranda/MS",
 
         descricao:
-            "Destino de ecoturismo localizado no Pantanal de Miranda.",
+            "Destino relacionado ao ecoturismo e à observação da natureza.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -68,14 +89,20 @@ const locais = [
 
         categoria: "Ecoturismo",
 
-        endereco:
-            "Miranda/MS",
+        endereco: "Região de Miranda/MS",
 
         descricao:
-            "Destino turístico relacionado ao Pantanal e ao ecoturismo.",
+            "Local relacionado ao turismo de natureza na região de Miranda.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -86,14 +113,20 @@ const locais = [
 
         categoria: "Ecoturismo",
 
-        endereco:
-            "Região de Miranda/MS",
+        endereco: "Região de Miranda/MS",
 
         descricao:
-            "Destino de natureza localizado na região de Miranda.",
+            "Opção de turismo e contato com a natureza na região.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -104,14 +137,20 @@ const locais = [
 
         categoria: "Hospedagem",
 
-        endereco:
-            "Miranda/MS",
+        endereco: "Miranda/MS",
 
         descricao:
-            "Pousada localizada na região turística de Miranda.",
+            "Opção de hospedagem na região de Miranda.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -122,14 +161,20 @@ const locais = [
 
         categoria: "Ecoturismo",
 
-        endereco:
-            "Miranda/MS",
+        endereco: "Região de Miranda/MS",
 
         descricao:
-            "Ecolodge relacionado ao turismo de natureza da região.",
+            "Local relacionado ao ecoturismo e hospedagem na região.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -140,14 +185,20 @@ const locais = [
 
         categoria: "Hospedagem",
 
-        endereco:
-            "Miranda/MS",
+        endereco: "Miranda/MS",
 
         descricao:
-            "Pousada localizada no município de Miranda.",
+            "Opção de hospedagem no município de Miranda/MS.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -158,14 +209,20 @@ const locais = [
 
         categoria: "Ecoturismo",
 
-        endereco:
-            "Miranda/MS",
+        endereco: "Região de Miranda/MS",
 
         descricao:
-            "Destino turístico ligado à natureza da região.",
+            "Opção relacionada ao turismo e à natureza na região de Miranda.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -176,14 +233,20 @@ const locais = [
 
         categoria: "Gastronomia",
 
-        endereco:
-            "Miranda/MS",
+        endereco: "Miranda/MS",
 
         descricao:
-            "Estabelecimento de alimentação localizado em Miranda.",
+            "Estabelecimento de alimentação localizado em Miranda/MS.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     },
 
 
@@ -194,239 +257,166 @@ const locais = [
 
         categoria: "Cultura",
 
-        endereco:
-            "Miranda/MS",
+        endereco: "Miranda/MS",
 
         descricao:
-            "Local relacionado à história ferroviária e à cultura de Miranda.",
+            "Local de interesse histórico e cultural de Miranda/MS.",
 
         fonte:
-            "https://turismo.miranda.ms.gov.br/"
+            "https://turismo.miranda.ms.gov.br/",
+
+        acessibilidade: {
+            rampa: false,
+            banheiro: false,
+            vaga: false,
+            entrada: false
+        }
     }
 
 ];
 
 
-// ============================================================
-// NAVEGAÇÃO
-// ============================================================
+/* =========================================================
+   ELEMENTOS
+========================================================= */
 
-function irPara(id) {
+const listaLugares =
+    document.getElementById("lista-lugares");
 
-    document
-        .querySelectorAll(".pagina")
-        .forEach(function (pagina) {
+const detalhes =
+    document.getElementById("detalhes");
 
-            pagina.classList.remove("ativa");
-
-        });
-
-
-    const pagina =
-        document.getElementById(id);
+const semResultados =
+    document.getElementById("semResultados");
 
 
-    if (pagina) {
+/* =========================================================
+   INICIALIZAÇÃO
+========================================================= */
 
-        pagina.classList.add("ativa");
+document.addEventListener("DOMContentLoaded", () => {
 
-    }
+    mostrarLocais(locais);
 
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-}
+});
 
 
-// ============================================================
-// GOOGLE MAPS
-// ============================================================
-
-function gerarLinkMaps(local) {
-
-    const pesquisa =
-        encodeURIComponent(
-            local.nome +
-            ", " +
-            local.endereco +
-            ", Miranda MS"
-        );
-
-
-    return (
-        "https://www.google.com/maps/search/?api=1&query=" +
-        pesquisa
-    );
-
-}
-
-
-// ============================================================
-// SEGURANÇA
-// ============================================================
-
-function escapar(texto) {
-
-    const elemento =
-        document.createElement("div");
-
-
-    elemento.textContent =
-        texto ?? "";
-
-
-    return elemento.innerHTML;
-
-}
-
-
-// ============================================================
-// MOSTRAR LUGARES
-// ============================================================
+/* =========================================================
+   MOSTRAR LOCAIS
+========================================================= */
 
 function mostrarLocais(lista) {
 
-    const container =
-        document.getElementById(
-            "lista-lugares"
-        );
-
-
-    const contador =
-        document.getElementById(
-            "contador"
-        );
-
-
-    if (!container) return;
-
-
-    if (contador) {
-
-        contador.textContent =
-            lista.length +
-            (
-                lista.length === 1
-                    ? " lugar encontrado"
-                    : " lugares encontrados"
-            );
-
-    }
-
-
-    container.innerHTML = "";
-
+    listaLugares.innerHTML = "";
 
     if (lista.length === 0) {
 
-        container.innerHTML = `
-
-            <div class="vazio">
-
-                <h3>
-                    Nenhum lugar encontrado
-                </h3>
-
-                <p>
-                    Tente pesquisar por outro nome
-                    ou categoria.
-                </p>
-
-            </div>
-
-        `;
+        semResultados.hidden = false;
 
         return;
-
     }
 
+    semResultados.hidden = true;
 
-    lista.forEach(function (local) {
+
+    lista.forEach(local => {
 
         const card =
             document.createElement("article");
 
-
-        card.className =
-            "lugar-card";
+        card.className = "card-local";
 
 
         card.innerHTML = `
 
-            <span class="badge">
-
-                ${escapar(local.categoria)}
-
+            <span class="card-categoria">
+                ${local.categoria}
             </span>
 
-
             <h3>
-
-                ${escapar(local.nome)}
-
+                ${local.nome}
             </h3>
 
-
-            <p class="endereco-card">
-
-                📍 ${escapar(local.endereco)}
-
+            <p class="card-endereco">
+                📍 ${local.endereco}
             </p>
 
-
-            <p>
-
-                ${escapar(local.descricao)}
-
+            <p class="card-descricao">
+                ${local.descricao}
             </p>
 
+            <div class="tags-acessibilidade">
 
-            <div class="acoes-card">
+                ${criarTag(
+                    "♿ Rampa",
+                    local.acessibilidade.rampa
+                )}
 
-                <button
-                    class="btn btn-pequeno"
-                    onclick="abrirDetalhes(${local.id})"
-                >
+                ${criarTag(
+                    "🚻 Banheiro",
+                    local.acessibilidade.banheiro
+                )}
 
-                    Ver detalhes
+                ${criarTag(
+                    "🅿️ Vaga PCD",
+                    local.acessibilidade.vaga
+                )}
 
-                </button>
-
-
-                <a
-                    class="btn btn-secundario btn-pequeno"
-                    href="${gerarLinkMaps(local)}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-
-                    📍 Maps
-
-                </a>
+                ${criarTag(
+                    "🚪 Entrada",
+                    local.acessibilidade.entrada
+                )}
 
             </div>
+
+            <button
+                type="button"
+                class="btn-ver-detalhes"
+                onclick="abrirDetalhes(${local.id})"
+            >
+                Ver detalhes
+            </button>
 
         `;
 
 
-        container.appendChild(card);
+        listaLugares.appendChild(card);
 
     });
 
 }
 
 
-// ============================================================
-// FILTROS
-// ============================================================
+/* =========================================================
+   TAGS DE ACESSIBILIDADE
+========================================================= */
 
-function aplicarFiltros() {
+function criarTag(nome, disponivel) {
+
+    if (disponivel) {
+
+        return `
+            <span class="tag-acessibilidade disponivel">
+                ${nome} ✓
+            </span>
+        `;
+
+    }
+
+
+    return `
+        <span class="tag-acessibilidade">
+            ${nome}
+        </span>
+    `;
+}
+
+
+/* =========================================================
+   FILTROS
+========================================================= */
+
+function atualizarResultados() {
 
     const texto =
         document
@@ -442,14 +432,36 @@ function aplicarFiltros() {
             .value;
 
 
-    const resultados =
-        locais.filter(function (local) {
+    const filtroRampa =
+        document
+            .getElementById("filtroRampa")
+            .checked;
 
 
-            const textoEncontrado =
+    const filtroBanheiro =
+        document
+            .getElementById("filtroBanheiro")
+            .checked;
 
-                !texto ||
 
+    const filtroVaga =
+        document
+            .getElementById("filtroVaga")
+            .checked;
+
+
+    const filtroEntrada =
+        document
+            .getElementById("filtroEntrada")
+            .checked;
+
+
+    const resultado =
+        locais.filter(local => {
+
+            /* Pesquisa */
+
+            const correspondeTexto =
                 local.nome
                     .toLowerCase()
                     .includes(texto) ||
@@ -463,37 +475,109 @@ function aplicarFiltros() {
                     .includes(texto);
 
 
-            const categoriaEncontrada =
-
-                categoria === "Todos" ||
-
-                local.categoria === categoria;
+            if (!correspondeTexto) {
+                return false;
+            }
 
 
-            return (
-                textoEncontrado &&
-                categoriaEncontrada
-            );
+            /* Categoria */
+
+            if (
+                categoria !== "Todos" &&
+                local.categoria !== categoria
+            ) {
+
+                return false;
+
+            }
+
+
+            /* Rampa */
+
+            if (
+                filtroRampa &&
+                !local.acessibilidade.rampa
+            ) {
+
+                return false;
+
+            }
+
+
+            /* Banheiro */
+
+            if (
+                filtroBanheiro &&
+                !local.acessibilidade.banheiro
+            ) {
+
+                return false;
+
+            }
+
+
+            /* Vaga */
+
+            if (
+                filtroVaga &&
+                !local.acessibilidade.vaga
+            ) {
+
+                return false;
+
+            }
+
+
+            /* Entrada */
+
+            if (
+                filtroEntrada &&
+                !local.acessibilidade.entrada
+            ) {
+
+                return false;
+
+            }
+
+
+            return true;
 
         });
 
 
-    mostrarLocais(resultados);
+    mostrarLocais(resultado);
 
 }
 
 
-// ============================================================
-// PESQUISA DA HOME
-// ============================================================
+/* =========================================================
+   FILTRO POR CATEGORIA
+========================================================= */
+
+function filtrarCategoria(categoria) {
+
+    document
+        .getElementById("categoriaSelect")
+        .value = categoria;
+
+
+    irParaLugares();
+
+    atualizarResultados();
+
+}
+
+
+/* =========================================================
+   PESQUISA DA PÁGINA INICIAL
+========================================================= */
 
 function pesquisarInicio() {
 
     const texto =
         document
             .getElementById("homeSearch")
-            .value
-            .trim();
+            .value;
 
 
     document
@@ -501,50 +585,25 @@ function pesquisarInicio() {
         .value = texto;
 
 
-    document
-        .getElementById("categoriaSelect")
-        .value = "Todos";
+    irParaLugares();
 
-
-    irPara("lugares");
-
-
-    aplicarFiltros();
+    atualizarResultados();
 
 }
 
 
-// ============================================================
-// CATEGORIA
-// ============================================================
-
-function filtrarCategoria(categoria) {
-
-    document
-        .getElementById("searchInput")
-        .value = "";
-
-
-    document
-        .getElementById("categoriaSelect")
-        .value = categoria;
-
-
-    irPara("lugares");
-
-
-    aplicarFiltros();
-
-}
-
-
-// ============================================================
-// LIMPAR
-// ============================================================
+/* =========================================================
+   LIMPAR FILTROS
+========================================================= */
 
 function limparFiltros() {
 
     document
+        .getElementById("homeSearch")
+        .value = "";
+
+
+    document
         .getElementById("searchInput")
         .value = "";
 
@@ -552,6 +611,26 @@ function limparFiltros() {
     document
         .getElementById("categoriaSelect")
         .value = "Todos";
+
+
+    document
+        .getElementById("filtroRampa")
+        .checked = false;
+
+
+    document
+        .getElementById("filtroBanheiro")
+        .checked = false;
+
+
+    document
+        .getElementById("filtroVaga")
+        .checked = false;
+
+
+    document
+        .getElementById("filtroEntrada")
+        .checked = false;
 
 
     mostrarLocais(locais);
@@ -559,33 +638,29 @@ function limparFiltros() {
 }
 
 
-// ============================================================
-// DETALHES
-// ============================================================
+/* =========================================================
+   DETALHES DO LOCAL
+========================================================= */
 
 function abrirDetalhes(id) {
 
     const local =
-        locais.find(function (item) {
-
-            return item.id === id;
-
-        });
+        locais.find(item => item.id === id);
 
 
-    if (!local) return;
+    if (!local) {
+        return;
+    }
 
 
     document
         .getElementById("detCategoria")
-        .textContent =
-            local.categoria;
+        .textContent = local.categoria;
 
 
     document
         .getElementById("detNome")
-        .textContent =
-            local.nome;
+        .textContent = local.nome;
 
 
     document
@@ -600,32 +675,185 @@ function abrirDetalhes(id) {
             local.descricao;
 
 
+    /* Acessibilidade */
+
+    const acessibilidade =
+        document.getElementById(
+            "detAcessibilidade"
+        );
+
+
+    acessibilidade.innerHTML = `
+
+        ${criarDetalheAcessibilidade(
+            "♿ Rampa de acesso",
+            local.acessibilidade.rampa
+        )}
+
+        ${criarDetalheAcessibilidade(
+            "🚻 Banheiro acessível",
+            local.acessibilidade.banheiro
+        )}
+
+        ${criarDetalheAcessibilidade(
+            "🅿️ Vaga PCD",
+            local.acessibilidade.vaga
+        )}
+
+        ${criarDetalheAcessibilidade(
+            "🚪 Entrada acessível",
+            local.acessibilidade.entrada
+        )}
+
+    `;
+
+
+    /* Google Maps */
+
+    const consulta =
+        encodeURIComponent(
+            `${local.nome}, ${local.endereco}`
+        );
+
+
     document
-        .getElementById("botaoMaps")
-        .onclick = function () {
+        .getElementById("btnMaps")
+        .href =
+            `https://www.google.com/maps/search/?api=1&query=${consulta}`;
 
-            window.open(
-                gerarLinkMaps(local),
-                "_blank"
-            );
 
-        };
-
+    /* Fonte */
 
     document
-        .getElementById("botaoFonte")
+        .getElementById("btnFonte")
         .href =
             local.fonte;
 
 
-    irPara("detalhes");
+    /* Trocar telas */
+
+    document
+        .getElementById("lugares")
+        .hidden = true;
+
+
+    document
+        .getElementById("detalhes")
+        .hidden = false;
+
+
+    document
+        .getElementById("semResultados")
+        .hidden = true;
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
 
-// ============================================================
-// CONTRASTE
-// ============================================================
+/* =========================================================
+   DETALHE DE ACESSIBILIDADE
+========================================================= */
+
+function criarDetalheAcessibilidade(
+    nome,
+    disponivel
+) {
+
+    if (disponivel) {
+
+        return `
+            <div class="det-acessibilidade-item disponivel">
+                ${nome} — disponível ✓
+            </div>
+        `;
+
+    }
+
+
+    return `
+        <div class="det-acessibilidade-item">
+            ${nome} — não confirmado
+        </div>
+    `;
+
+}
+
+
+/* =========================================================
+   VOLTAR PARA LISTA
+========================================================= */
+
+function voltarParaLista() {
+
+    document
+        .getElementById("detalhes")
+        .hidden = true;
+
+
+    document
+        .getElementById("lugares")
+        .hidden = false;
+
+
+    irParaLugares();
+
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+========================================================= */
+
+function irParaInicio() {
+
+    document
+        .getElementById("detalhes")
+        .hidden = true;
+
+
+    document
+        .getElementById("lugares")
+        .hidden = false;
+
+
+    document
+        .getElementById("inicio")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+function irParaLugares() {
+
+    document
+        .getElementById("detalhes")
+        .hidden = true;
+
+
+    document
+        .getElementById("lugares")
+        .hidden = false;
+
+
+    document
+        .getElementById("lugares")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* =========================================================
+   ALTO CONTRASTE
+========================================================= */
 
 function alternarContraste() {
 
@@ -635,63 +863,29 @@ function alternarContraste() {
         .toggle("contraste");
 
 
-    const ativo =
+    const ativado =
         document
             .body
             .classList
             .contains("contraste");
 
 
-    localStorage.setItem(
-        "contraste",
-        ativo ? "1" : "0"
-    );
-
-}
+    const botao =
+        document.getElementById(
+            "btnContraste"
+        );
 
 
-// ============================================================
-// INICIALIZAÇÃO
-// ============================================================
+    if (ativado) {
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+        botao.textContent =
+            "☀️ Contraste normal";
 
+    } else {
 
-        if (
-            localStorage.getItem(
-                "contraste"
-            ) === "1"
-        ) {
-
-            document
-                .body
-                .classList
-                .add("contraste");
-
-        }
-
-
-        document
-            .getElementById("homeSearch")
-            .addEventListener(
-                "keydown",
-                function (evento) {
-
-                    if (
-                        evento.key === "Enter"
-                    ) {
-
-                        pesquisarInicio();
-
-                    }
-
-                }
-            );
-
-
-        mostrarLocais(locais);
+        botao.textContent =
+            "👁️ Alto contraste";
 
     }
-);
+
+}

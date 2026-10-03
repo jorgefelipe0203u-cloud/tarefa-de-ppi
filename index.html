@@ -4,344 +4,510 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Guia Miranda/MS | Acessibilidade</title>
+
     <meta
         name="description"
-        content="Guia de lugares de Miranda, Mato Grosso do Sul, com acesso rápido ao Google Maps."
+        content="Guia de locais de Miranda/MS com pesquisa, categorias, localização e informações de acessibilidade."
     >
-
-    <title>Guia Miranda/MS</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="header">
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
 
-    <button class="logo" onclick="irPara('home')">
-        ♿ Guia Miranda/MS
-    </button>
-
-    <button
-        class="btn-contraste"
-        onclick="alternarContraste()"
-        aria-label="Ativar alto contraste"
-    >
-        👁️ Contraste
-    </button>
-
-</header>
-
-
-<main>
-
-    <!-- =========================
-         INÍCIO
-    ========================== -->
-
-    <section id="home" class="pagina ativa">
-
-        <div class="hero">
-
-            <span class="eyebrow">
-                MIRANDA • MATO GROSSO DO SUL
-            </span>
-
-            <h1>
-                Encontre lugares em Miranda
-            </h1>
-
-            <p>
-                Pesquise hotéis, restaurantes, pontos turísticos
-                e outros lugares reais da cidade.
-            </p>
-
-            <div class="busca-principal">
-
-                <input
-                    type="search"
-                    id="homeSearch"
-                    placeholder="Digite o nome de um lugar..."
-                    aria-label="Pesquisar lugar"
-                >
-
-                <button
-                    class="btn"
-                    onclick="pesquisarInicio()"
-                >
-                    🔎 Pesquisar
-                </button>
-
-            </div>
-
-            <button
-                class="link-button"
-                onclick="irPara('lugares')"
-            >
-                Ver todos os lugares →
-            </button>
-
+        <div
+            class="logo"
+            onclick="irParaInicio()"
+            tabindex="0"
+            role="button"
+            aria-label="Ir para a página inicial"
+        >
+            ♿ Guia Miranda/MS
         </div>
 
+        <button
+            id="btnContraste"
+            class="btn-contraste"
+            onclick="alternarContraste()"
+            type="button"
+        >
+            👁️ Alto contraste
+        </button>
 
-        <section class="secao">
+    </header>
 
-            <div class="titulo-secao">
 
-                <span class="eyebrow">
-                    EXPLORAR
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+
+        <!-- INÍCIO -->
+        <section id="inicio" class="hero">
+
+            <div class="hero-conteudo">
+
+                <span class="hero-tag">
+                    Miranda - Mato Grosso do Sul
                 </span>
 
-                <h2>
-                    Categorias
-                </h2>
+                <h1>
+                    Encontre lugares em Miranda
+                </h1>
+
+                <p>
+                    Pesquise locais, encontre informações e veja como
+                    chegar pelo Google Maps.
+                </p>
+
+                <div class="busca-principal">
+
+                    <input
+                        type="search"
+                        id="homeSearch"
+                        placeholder="🔎 Procure por um lugar..."
+                        aria-label="Pesquisar lugares"
+                        oninput="pesquisarInicio()"
+                    >
+
+                    <button
+                        type="button"
+                        onclick="irParaLugares()"
+                    >
+                        Pesquisar
+                    </button>
+
+                </div>
 
             </div>
 
+        </section>
 
-            <div class="categorias">
+
+        <!-- CATEGORIAS -->
+        <section class="categorias container">
+
+            <h2>Encontre por categoria</h2>
+
+            <div class="categorias-grid">
 
                 <button
+                    type="button"
                     class="categoria"
                     onclick="filtrarCategoria('Todos')"
                 >
-                    <span>📍</span>
-                    <strong>Todos</strong>
-                    <small>Todos os lugares</small>
+                    📍
+                    <span>Todos</span>
                 </button>
 
-
                 <button
+                    type="button"
                     class="categoria"
                     onclick="filtrarCategoria('Hospedagem')"
                 >
-                    <span>🛏️</span>
-                    <strong>Hospedagem</strong>
-                    <small>Hotéis e pousadas</small>
+                    🏨
+                    <span>Hospedagem</span>
                 </button>
 
-
                 <button
+                    type="button"
                     class="categoria"
                     onclick="filtrarCategoria('Gastronomia')"
                 >
-                    <span>🍽️</span>
-                    <strong>Gastronomia</strong>
-                    <small>Restaurantes e comida</small>
+                    🍽️
+                    <span>Gastronomia</span>
                 </button>
 
-
                 <button
+                    type="button"
                     class="categoria"
                     onclick="filtrarCategoria('Ecoturismo')"
                 >
-                    <span>🌿</span>
-                    <strong>Ecoturismo</strong>
-                    <small>Natureza e Pantanal</small>
+                    🌳
+                    <span>Ecoturismo</span>
                 </button>
 
-
                 <button
+                    type="button"
                     class="categoria"
                     onclick="filtrarCategoria('Cultura')"
                 >
-                    <span>🎭</span>
-                    <strong>Cultura</strong>
-                    <small>História e cultura</small>
+                    🏛️
+                    <span>Cultura</span>
                 </button>
 
             </div>
 
         </section>
 
-    </section>
+
+        <!-- LOCAIS -->
+        <section id="lugares" class="lugares container">
+
+            <div class="titulo-secao">
+
+                <div>
+                    <span class="mini-titulo">
+                        GUIA LOCAL
+                    </span>
+
+                    <h2>
+                        Locais em Miranda/MS
+                    </h2>
+                </div>
+
+            </div>
 
 
-    <!-- =========================
-         LISTA DE LUGARES
-    ========================== -->
+            <!-- PESQUISA -->
+            <div class="area-pesquisa">
 
-    <section id="lugares" class="pagina">
+                <div class="campo-pesquisa">
 
-        <div class="cabecalho-lista">
+                    <label for="searchInput">
+                        🔎 Pesquisar local
+                    </label>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Digite o nome do local..."
+                        oninput="atualizarResultados()"
+                    >
+
+                </div>
+
+
+                <div class="campo-pesquisa">
+
+                    <label for="categoriaSelect">
+                        Categoria
+                    </label>
+
+                    <select
+                        id="categoriaSelect"
+                        onchange="atualizarResultados()"
+                    >
+                        <option value="Todos">
+                            Todas as categorias
+                        </option>
+
+                        <option value="Hospedagem">
+                            Hospedagem
+                        </option>
+
+                        <option value="Gastronomia">
+                            Gastronomia
+                        </option>
+
+                        <option value="Ecoturismo">
+                            Ecoturismo
+                        </option>
+
+                        <option value="Cultura">
+                            Cultura
+                        </option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTROS DE ACESSIBILIDADE -->
+            <section class="filtros-acessibilidade">
+
+                <div class="filtros-titulo">
+
+                    <div>
+                        <span class="mini-titulo">
+                            ACESSIBILIDADE
+                        </span>
+
+                        <h2>
+                            Encontre locais acessíveis
+                        </h2>
+                    </div>
+
+                    <span class="icone-acessibilidade">
+                        ♿
+                    </span>
+
+                </div>
+
+                <p class="texto-filtro">
+                    Selecione os recursos de acessibilidade que você
+                    deseja encontrar.
+                </p>
+
+
+                <div class="opcoes-acessibilidade">
+
+                    <label class="opcao-acessibilidade">
+
+                        <input
+                            type="checkbox"
+                            id="filtroRampa"
+                            onchange="atualizarResultados()"
+                        >
+
+                        <span>
+                            ♿ Rampa de acesso
+                        </span>
+
+                    </label>
+
+
+                    <label class="opcao-acessibilidade">
+
+                        <input
+                            type="checkbox"
+                            id="filtroBanheiro"
+                            onchange="atualizarResultados()"
+                        >
+
+                        <span>
+                            🚻 Banheiro acessível
+                        </span>
+
+                    </label>
+
+
+                    <label class="opcao-acessibilidade">
+
+                        <input
+                            type="checkbox"
+                            id="filtroVaga"
+                            onchange="atualizarResultados()"
+                        >
+
+                        <span>
+                            🅿️ Vaga PCD
+                        </span>
+
+                    </label>
+
+
+                    <label class="opcao-acessibilidade">
+
+                        <input
+                            type="checkbox"
+                            id="filtroEntrada"
+                            onchange="atualizarResultados()"
+                        >
+
+                        <span>
+                            🚪 Entrada acessível
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn-limpar"
+                    onclick="limparFiltros()"
+                >
+                    Limpar filtros
+                </button>
+
+            </section>
+
+
+            <!-- RESULTADOS -->
+            <div
+                id="lista-lugares"
+                class="lista-lugares"
+            ></div>
+
+        </section>
+
+
+        <!-- DETALHES -->
+        <section
+            id="detalhes"
+            class="detalhes container"
+            hidden
+        >
+
+            <button
+                type="button"
+                class="btn-voltar"
+                onclick="voltarParaLista()"
+            >
+                ← Voltar para locais
+            </button>
+
+
+            <div class="detalhes-card">
+
+                <span
+                    id="detCategoria"
+                    class="detalhe-categoria"
+                ></span>
+
+                <h2 id="detNome"></h2>
+
+                <p
+                    id="detEndereco"
+                    class="det-endereco"
+                ></p>
+
+                <p
+                    id="detDescricao"
+                    class="det-descricao"
+                ></p>
+
+
+                <div
+                    id="detAcessibilidade"
+                    class="det-acessibilidade"
+                ></div>
+
+
+                <div class="aviso-informacao">
+
+                    <strong>ℹ️ Sobre as informações</strong>
+
+                    <p>
+                        As informações de acessibilidade devem ser
+                        confirmadas antes de serem consideradas como
+                        garantia das condições do local.
+                    </p>
+
+                </div>
+
+
+                <div class="botoes-detalhes">
+
+                    <a
+                        id="btnMaps"
+                        class="btn-principal"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        📍 Abrir no Google Maps
+                    </a>
+
+                    <a
+                        id="btnFonte"
+                        class="btn-secundario"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        🔗 Ver fonte
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NENHUM RESULTADO -->
+        <section
+            id="semResultados"
+            class="sem-resultados container"
+            hidden
+        >
+
+            <div>
+                🔎
+            </div>
+
+            <h2>
+                Nenhum local encontrado
+            </h2>
+
+            <p>
+                Tente mudar sua pesquisa ou remover algum filtro.
+            </p>
+
+            <button
+                type="button"
+                onclick="limparFiltros()"
+            >
+                Limpar filtros
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+
+        <div class="rodape-conteudo">
 
             <div>
 
-                <span class="eyebrow">
-                    GUIA
-                </span>
-
-                <h2>
-                    Lugares de Miranda
-                </h2>
-
-                <p id="contador">
-                    Carregando lugares...
-                </p>
-
-            </div>
-
-
-            <button
-                class="btn btn-secundario"
-                onclick="irPara('home')"
-            >
-                ← Início
-            </button>
-
-        </div>
-
-
-        <div class="filtros">
-
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Pesquisar lugar..."
-                oninput="aplicarFiltros()"
-            >
-
-
-            <select
-                id="categoriaSelect"
-                onchange="aplicarFiltros()"
-            >
-
-                <option value="Todos">
-                    Todas as categorias
-                </option>
-
-                <option value="Hospedagem">
-                    Hospedagem
-                </option>
-
-                <option value="Gastronomia">
-                    Gastronomia
-                </option>
-
-                <option value="Ecoturismo">
-                    Ecoturismo
-                </option>
-
-                <option value="Cultura">
-                    Cultura
-                </option>
-
-            </select>
-
-
-            <button
-                class="btn btn-secundario"
-                onclick="limparFiltros()"
-            >
-                Limpar
-            </button>
-
-        </div>
-
-
-        <div
-            id="lista-lugares"
-            class="lista-lugares"
-        ></div>
-
-    </section>
-
-
-    <!-- =========================
-         DETALHES
-    ========================== -->
-
-    <section id="detalhes" class="pagina">
-
-        <button
-            class="btn btn-secundario voltar"
-            onclick="irPara('lugares')"
-        >
-            ← Voltar
-        </button>
-
-
-        <article class="detalhes-card">
-
-            <span
-                id="detCategoria"
-                class="badge"
-            ></span>
-
-
-            <h1 id="detNome"></h1>
-
-
-            <p
-                id="detEndereco"
-                class="endereco"
-            ></p>
-
-
-            <p
-                id="detDescricao"
-                class="descricao"
-            ></p>
-
-
-            <div class="acoes">
-
-                <button
-                    id="botaoMaps"
-                    class="btn"
-                >
-                    📍 Abrir no Google Maps
-                </button>
-
-
-                <a
-                    id="botaoFonte"
-                    class="btn btn-secundario"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🔗 Fonte
-                </a>
-
-            </div>
-
-
-            <div class="aviso">
-
-                <strong>ℹ️ Importante</strong>
+                <h3>
+                    ♿ Guia Miranda/MS
+                </h3>
 
                 <p>
-                    Este guia mostra locais e pontos de interesse
-                    encontrados em fontes públicas. A presença de um
-                    local no guia não significa que sua acessibilidade
-                    tenha sido verificada pelo projeto.
+                    Informações sobre locais de Miranda/MS.
                 </p>
 
             </div>
 
-        </article>
 
-    </section>
+            <div>
 
-</main>
+                <h3>
+                    Navegação
+                </h3>
+
+                <button
+                    type="button"
+                    onclick="irParaInicio()"
+                >
+                    Início
+                </button>
+
+                <button
+                    type="button"
+                    onclick="irParaLugares()"
+                >
+                    Locais
+                </button>
+
+            </div>
 
 
-<footer>
+            <div>
 
-    <strong>
-        ♿ Guia Acesso Livre — Miranda/MS
-    </strong>
+                <h3>
+                    Sobre o projeto
+                </h3>
 
-    <p>
-        Projeto informativo sobre lugares de Miranda,
-        Mato Grosso do Sul.
-    </p>
+                <p>
+                    Projeto desenvolvido para a atividade de PPI.
+                </p>
 
-</footer>
+            </div>
+
+        </div>
 
 
-<script src="script.js"></script>
+        <div class="rodape-final">
+
+            Guia Miranda/MS © 2026
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
