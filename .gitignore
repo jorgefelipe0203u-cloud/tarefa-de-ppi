@@ -1,0 +1,13 @@
+# Bancos de dados
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos de configuração com segredos
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
